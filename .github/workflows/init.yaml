@@ -1,0 +1,17 @@
+name: init-setup
+
+on: create
+
+jobs:
+  build:
+    if: github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: repo-dispatch
+      uses: peter-evans/repository-dispatch@v4
+      with:
+        repository: fabio-teichmann/ple-1-internal-dev-platform-mini
+        event-type: template-init
+        client-payload: '{"ref": "${{ github.ref }}"}'
