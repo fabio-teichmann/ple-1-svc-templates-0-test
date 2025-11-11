@@ -7,13 +7,15 @@ jobs:
   build:
     # if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
+    permissions:
+      actions: write
     steps:
     - uses: actions/checkout@v4
 
     - name: repo-dispatch
       uses: peter-evans/repository-dispatch@v4
       with:
-        token: ${{ secrets.PAT }}
+        # token: ${{ secrets.PAT }}
         repository: fabio-teichmann/ple-1-internal-dev-platform-mini
         event-type: template-init
         client-payload: '{"ref": "${{ github.ref }}", "repo": "${{ github.repository }}"}'
