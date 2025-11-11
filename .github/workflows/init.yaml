@@ -1,6 +1,7 @@
 name: init-setup
 
-on: create
+on: 
+  create
 
 jobs:
   build:
